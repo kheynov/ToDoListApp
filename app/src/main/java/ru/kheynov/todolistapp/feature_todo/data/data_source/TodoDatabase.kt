@@ -11,4 +11,8 @@ import ru.kheynov.todolistapp.feature_todo.domain.model.Todo
 )
 abstract class TodoDatabase : RoomDatabase() {
     abstract val todoDao: TodoDao
+
+    companion object{
+        const val DATABASE_NAME = "todos_db"
+    }
 }
