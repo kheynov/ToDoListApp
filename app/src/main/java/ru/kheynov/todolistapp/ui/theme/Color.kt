@@ -8,12 +8,14 @@ val lightPrimaryColor = Color(0xFFC8E6C9)
 val colorAccent = Color(0xFFFFC107)
 
 
+
 //Light scheme
 val textPrimary = Color(0xFF212121)
 val textSecondary = Color(0xFF757575)
+val lightSurfaceColor = Color(0xFFFFC108)
 val lightBackground = Color(0xFFFFFFFF)
 val textOnPrimary = Color(0xFFFFFFFF)
-val textOnSecondary = Color(0xFF212121)
+val textOnSecondary = Color(0xFF000000)
 
 
 //Dark scheme
