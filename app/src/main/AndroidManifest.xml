@@ -3,14 +3,15 @@
     package="ru.kheynov.todolistapp">
 
     <application
-        android:allowBackup="true"
+        android:name=".TodoApp"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ToDoListApp">
+        android:theme="@style/Theme.ToDoListApp"
+        android:allowBackup="false">
         <activity
-            android:name=".MainActivity"
+            android:name=".feature_todo.presentation.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.ToDoListApp.NoActionBar">
