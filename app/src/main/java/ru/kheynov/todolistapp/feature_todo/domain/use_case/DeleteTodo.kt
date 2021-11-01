@@ -6,7 +6,7 @@ import ru.kheynov.todolistapp.feature_todo.domain.repository.TodoRepository
 class DeleteTodo(
     private val repository: TodoRepository
 ) {
-    suspend fun invoke(todo: Todo){
+    suspend operator fun invoke(todo: Todo){
         repository.deleteTodo(todo)
     }
 }
