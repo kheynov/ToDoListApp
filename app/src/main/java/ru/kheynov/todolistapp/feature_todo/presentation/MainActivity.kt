@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(
                             route = ScreenRoutes.AddEditTodoScreen.route +
-                                    "?noteId={noteId}",
+                                    "?todoId={todoId}",
                             arguments = listOf(
                                 navArgument(name = "todoId") {
                                     type = NavType.IntType
