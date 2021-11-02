@@ -21,7 +21,7 @@ class TodoRepositoryImpl(
     }
 
     override suspend fun deleteTodo(todo: Todo) {
-        deleteTodo(todo)
+        dao.deleteTodo(todo)
     }
 
 }
