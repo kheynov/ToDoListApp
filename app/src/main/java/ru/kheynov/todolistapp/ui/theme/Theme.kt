@@ -14,7 +14,7 @@ private val DarkColorPalette = darkColors(
     onPrimary = Color.White,
     background = darkBackground,
     onSecondary = Color.White,
-    surface = darkSurface
+    surface = darkSurfaceColor
 )
 
 private val LightColorPalette = lightColors(
@@ -30,7 +30,7 @@ private val LightColorPalette = lightColors(
 @Composable
 fun ToDoListAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable() () -> Unit
+    content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {
         DarkColorPalette
