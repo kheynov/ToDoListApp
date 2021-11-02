@@ -45,7 +45,9 @@ fun TodoItem(
     onChecked: (Boolean) -> Unit
 ) {
     Card(
-        modifier = modifier.height(70.dp),
+        modifier = modifier
+            .height(70.dp)
+            .padding(horizontal = 18.dp),
         shape = RoundedCornerShape(cornerRadius),
     ) {
         Row(

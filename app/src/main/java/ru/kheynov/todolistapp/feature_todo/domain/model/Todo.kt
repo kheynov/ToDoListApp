@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class Todo(
     val title: String,
     val isChecked: Boolean,
-    val timestamp: Long,
+    val timestamp: Long = 0,
     @PrimaryKey val id: Int? = null
 )
 
