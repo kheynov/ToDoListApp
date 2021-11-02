@@ -13,7 +13,8 @@ private val DarkColorPalette = darkColors(
     secondary = colorAccent,
     onPrimary = Color.White,
     background = darkBackground,
-    onSecondary = Color.White
+    onSecondary = Color.White,
+    surface = darkSurface
 )
 
 private val LightColorPalette = lightColors(
@@ -22,7 +23,8 @@ private val LightColorPalette = lightColors(
     secondary = colorAccent,
     surface = lightSurfaceColor,
     background = lightBackground,
-    onSurface = textOnSecondary
+    onSurface = textOnSecondary,
+    onPrimary = textOnPrimary
 )
 
 @Composable
