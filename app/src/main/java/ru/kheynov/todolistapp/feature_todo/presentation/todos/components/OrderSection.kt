@@ -2,6 +2,7 @@ package ru.kheynov.todolistapp.feature_todo.presentation.todos.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ru.kheynov.todolistapp.feature_todo.domain.util.OrderType
@@ -14,7 +15,8 @@ fun OrderSection(
     onOrderChange: (TodoOrder) -> Unit
 ) {
     Column(
-        modifier = modifier
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
             modifier = Modifier.fillMaxWidth()

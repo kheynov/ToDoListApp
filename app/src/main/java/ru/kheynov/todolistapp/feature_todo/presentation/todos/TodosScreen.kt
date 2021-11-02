@@ -58,6 +58,7 @@ fun TodosScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                Spacer(modifier = Modifier.width(24.dp))
                 Text(
                     text = "ToDo's",
                     style = MaterialTheme.typography.h4
@@ -76,13 +77,17 @@ fun TodosScreen(
                 enter = fadeIn() + slideInVertically(),
                 exit = fadeOut() + slideOutVertically()
             ) {
-                OrderSection(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 16.dp),
-                    todoOrder = state.todoOrder
-                ) {
-                    viewModel.onEvent(TodosEvent.Order(it))
+                Row {
+                    Spacer(Modifier.width(16.dp))
+
+                    OrderSection(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 16.dp),
+                        todoOrder = state.todoOrder
+                    ) {
+                        viewModel.onEvent(TodosEvent.Order(it))
+                    }
                 }
             }
             Spacer(modifier = Modifier.height(16.dp))
@@ -116,7 +121,8 @@ fun TodosScreen(
                                     Todo(
                                         title = todo.title,
                                         isChecked = it,
-                                        id = todo.id
+                                        id = todo.id,
+                                        timestamp = System.currentTimeMillis(),
                                     )
                                 )
                             )
