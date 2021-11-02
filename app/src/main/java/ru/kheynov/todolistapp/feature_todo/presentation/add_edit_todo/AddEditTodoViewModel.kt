@@ -19,6 +19,7 @@ class AddEditTodoViewModel @Inject constructor(
     private val todosUseCases: TodosUseCases,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
+
     private val _todoTitle = mutableStateOf(
         TodoTextFieldState(
             hint = "Enter name for todo"
@@ -65,6 +66,7 @@ class AddEditTodoViewModel @Inject constructor(
                                 id = currentTodoId
                             )
                         )
+
                         _eventFlow.emit(UiEvent.SaveTodo)
                     } catch (e: InvalidTodoException) {
                         _eventFlow.emit(
