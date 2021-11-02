@@ -1,7 +1,5 @@
 package ru.kheynov.todolistapp.feature_todo.presentation.todos.components
 
-import android.content.res.Configuration.UI_MODE_NIGHT_NO
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -12,29 +10,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import ru.kheynov.todolistapp.feature_todo.domain.model.Todo
-import ru.kheynov.todolistapp.ui.theme.ToDoListAppTheme
-
-@Preview(name = "Light", uiMode = UI_MODE_NIGHT_NO, showBackground = true)
-@Preview(name = "Dark", uiMode = UI_MODE_NIGHT_YES, showBackground = true)
-@Composable
-fun TodoItemPreview() {
-    ToDoListAppTheme {
-        TodoItem(
-            todo = Todo(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                true,
-                1312414
-            ),
-            onDeleteClick = {},
-            onChecked = {}
-        )
-    }
-}
-
 
 @Composable
 fun TodoItem(
