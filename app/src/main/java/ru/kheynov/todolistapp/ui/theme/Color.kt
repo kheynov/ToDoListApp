@@ -3,7 +3,6 @@ package ru.kheynov.todolistapp.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val primaryColor = Color(0xFF607D8B)
-val darkPrimaryColor = Color(0xFF455A64)
 val lightPrimaryColor = Color(0xFFCFD8DC)
 val colorAccent = Color(0xFF4CAF50)
 
