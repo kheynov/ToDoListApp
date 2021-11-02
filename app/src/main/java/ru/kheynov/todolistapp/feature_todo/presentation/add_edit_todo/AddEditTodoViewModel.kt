@@ -24,7 +24,7 @@ class AddEditTodoViewModel @Inject constructor(
             hint = "Enter name for todo"
         )
     )
-    private val todoTitle: State<TodoTextFieldState> = _todoTitle
+    val todoTitle: State<TodoTextFieldState> = _todoTitle
 
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
@@ -47,15 +47,15 @@ class AddEditTodoViewModel @Inject constructor(
         }
     }
 
-    fun onEvent(event: AddEditTotoEvent) {
+    fun onEvent(event: AddEditTodoEvent) {
         when (event) {
-            is AddEditTotoEvent.EnteredTitle -> _todoTitle.value = _todoTitle.value.copy(
+            is AddEditTodoEvent.EnteredTitle -> _todoTitle.value = _todoTitle.value.copy(
                 text = event.value
             )
-            is AddEditTotoEvent.ChangeTitleFocus -> _todoTitle.value = _todoTitle.value.copy(
+            is AddEditTodoEvent.ChangeTitleFocus -> _todoTitle.value = _todoTitle.value.copy(
                 isHintVisible = !event.focusState.isFocused && _todoTitle.value.text.isBlank()
             )
-            is AddEditTotoEvent.SaveTodo -> {
+            is AddEditTodoEvent.SaveTodo -> {
                 viewModelScope.launch {
                     try {
                         todosUseCases.addTodo(

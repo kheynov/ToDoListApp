@@ -17,5 +17,5 @@ interface TodoDao {
     suspend fun insertTodo(todo: Todo)
 
     @Delete
-    suspend fun deleteNote(todo: Todo)
+    suspend fun deleteTodo(todo: Todo)
 }
