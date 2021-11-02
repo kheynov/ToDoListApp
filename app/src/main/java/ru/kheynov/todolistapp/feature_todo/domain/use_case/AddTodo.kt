@@ -13,9 +13,6 @@ class AddTodo(
         if (todo.title.isBlank()){
             throw InvalidTodoException("The title cannot be empty")
         }
-        if (todo.content.isBlank()){
-            throw InvalidTodoException("The content cannot be empty")
-        }
         repository.insertTodo(todo)
     }
 }

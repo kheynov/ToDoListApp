@@ -56,10 +56,7 @@ fun TodoItem(
             Spacer(modifier = Modifier.width(18.dp))
             Checkbox(
                 checked = todo.isChecked,
-                onCheckedChange = onChecked,
-                colors = CheckboxDefaults.colors(
-
-                )
+                onCheckedChange = onChecked
             )
             Spacer(modifier = Modifier.width(18.dp))
             Text(

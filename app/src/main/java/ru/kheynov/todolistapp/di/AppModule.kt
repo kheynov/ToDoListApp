@@ -9,6 +9,7 @@ import dagger.hilt.components.SingletonComponent
 import ru.kheynov.todolistapp.feature_todo.data.data_source.TodoDatabase
 import ru.kheynov.todolistapp.feature_todo.data.repository.TodoRepositoryImpl
 import ru.kheynov.todolistapp.feature_todo.domain.repository.TodoRepository
+import ru.kheynov.todolistapp.feature_todo.domain.use_case.AddTodo
 import ru.kheynov.todolistapp.feature_todo.domain.use_case.DeleteTodo
 import ru.kheynov.todolistapp.feature_todo.domain.use_case.GetTodos
 import ru.kheynov.todolistapp.feature_todo.domain.use_case.TodosUseCases
@@ -39,7 +40,8 @@ object AppModule {
     fun provideTodoUseCases(repository: TodoRepository): TodosUseCases {
         return TodosUseCases(
             getTodos = GetTodos(repository),
-            deleteTodo = DeleteTodo(repository)
+            deleteTodo = DeleteTodo(repository),
+            addTodo = AddTodo(repository)
         )
     }
 }
