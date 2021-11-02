@@ -10,6 +10,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import ru.kheynov.todolistapp.feature_todo.domain.model.InvalidTodoException
 import ru.kheynov.todolistapp.feature_todo.domain.model.Todo
 import ru.kheynov.todolistapp.feature_todo.domain.use_case.TodosUseCases
 import ru.kheynov.todolistapp.feature_todo.domain.util.OrderType
@@ -62,6 +63,21 @@ class TodoViewModel @Inject constructor(
                     isOrderSelectionVisible = !state.value.isOrderSelectionVisible
                 )
             }
+            is TodosEvent.SaveTodo -> {
+                viewModelScope.launch {
+                    try {
+                        todosUseCases.addTodo(
+                            Todo(
+                                title = event.todo.title,
+                                isChecked = event.todo.isChecked,
+                                id = event.todo.id
+                            )
+                        )
+                    } catch (e: InvalidTodoException) {
+                        Log.e("ERROR", e.stackTraceToString())
+                    }
+                }
+            }
         }
     }
 
@@ -73,6 +89,6 @@ class TodoViewModel @Inject constructor(
                     todos = todos,
                     todoOrder = todoOrder
                 )
-            }.launchIn(viewModelScope   )
+            }.launchIn(viewModelScope)
     }
 }

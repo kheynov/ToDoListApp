@@ -8,4 +8,5 @@ sealed class TodosEvent {
     data class DeleteTodo(val todo: Todo): TodosEvent()
     object RestoreTodo: TodosEvent()
     object ToggleOrderSection: TodosEvent()
+    data class SaveTodo(val todo: Todo): TodosEvent()
 }

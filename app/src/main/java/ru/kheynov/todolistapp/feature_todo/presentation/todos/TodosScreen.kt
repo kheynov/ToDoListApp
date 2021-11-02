@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
+import ru.kheynov.todolistapp.feature_todo.domain.model.Todo
 import ru.kheynov.todolistapp.feature_todo.presentation.todos.components.OrderSection
 import ru.kheynov.todolistapp.feature_todo.presentation.todos.components.TodoItem
 import ru.kheynov.todolistapp.feature_todo.presentation.util.ScreenRoutes
@@ -94,7 +95,8 @@ fun TodosScreen(
                             .clickable {
                                 navController.navigate(
                                     ScreenRoutes.AddEditTodoScreen.route +
-                                            "?todoId=${todo.id}")
+                                            "?todoId=${todo.id}"
+                                )
                             },
                         onDeleteClick = {
                             viewModel.onEvent(TodosEvent.DeleteTodo(todo))
@@ -108,7 +110,17 @@ fun TodosScreen(
                                 }
                             }
                         },
-                        onChecked = {}
+                        onChecked = {
+                            viewModel.onEvent(
+                                TodosEvent.SaveTodo(
+                                    Todo(
+                                        title = todo.title,
+                                        isChecked = it,
+                                        id = todo.id
+                                    )
+                                )
+                            )
+                        }
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                 }
