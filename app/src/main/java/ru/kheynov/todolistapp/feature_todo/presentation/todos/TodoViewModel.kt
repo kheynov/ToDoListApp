@@ -70,7 +70,8 @@ class TodoViewModel @Inject constructor(
                             Todo(
                                 title = event.todo.title,
                                 isChecked = event.todo.isChecked,
-                                id = event.todo.id
+                                id = event.todo.id,
+                                timestamp = System.currentTimeMillis(),
                             )
                         )
                     } catch (e: InvalidTodoException) {
