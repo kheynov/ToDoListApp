@@ -1,5 +1,6 @@
 package ru.kheynov.todolistapp.feature_todo.presentation.add_edit_todo
 
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -37,6 +38,7 @@ fun AddEditTotoScreen(
         },
         onSave = { viewModel.onEvent(AddEditTodoEvent.SaveTodo) },
         text = titleState.text,
+        textStyle = MaterialTheme.typography.body1,
         textFieldLabel = "Enter new ToDo name",
         onBack = {
             navController.navigateUp()
