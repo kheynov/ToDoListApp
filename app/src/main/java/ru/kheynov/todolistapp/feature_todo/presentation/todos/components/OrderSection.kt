@@ -1,12 +1,25 @@
 package ru.kheynov.todolistapp.feature_todo.presentation.todos.components
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDownward
+import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.kheynov.todolistapp.feature_todo.domain.util.OrderType
 import ru.kheynov.todolistapp.feature_todo.domain.util.TodoOrder
+import ru.kheynov.todolistapp.ui.theme.ToDoListAppTheme
+
+@Preview
+@Composable
+fun OrderSectionPreview() {
+    ToDoListAppTheme {
+        OrderSection(onOrderChange = {})
+    }
+}
 
 @Composable
 fun OrderSection(
@@ -14,42 +27,42 @@ fun OrderSection(
     todoOrder: TodoOrder = TodoOrder.Date(OrderType.Descending),
     onOrderChange: (TodoOrder) -> Unit
 ) {
-    Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth()
+    Row(modifier = Modifier.fillMaxWidth()) {
+        Column(
+            modifier = modifier.weight(1f),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             DefaultRadioButton(
                 text = "Title",
                 selected = todoOrder is TodoOrder.Title,
                 onSelect = { onOrderChange(TodoOrder.Title(todoOrder.orderType)) }
             )
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.height(18.dp))
             DefaultRadioButton(
                 text = "Date",
                 selected = todoOrder is TodoOrder.Date,
                 onSelect = { onOrderChange(TodoOrder.Date(todoOrder.orderType)) }
             )
         }
-        Spacer(modifier = Modifier.height(16.dp))
-        Row(
-            modifier = Modifier.fillMaxWidth()
+        Column(
+            modifier = modifier.weight(1f),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            DefaultRadioButton(
-                text = "Ascending",
-                selected = todoOrder.orderType is OrderType.Ascending,
-                onSelect = {
-                    onOrderChange(todoOrder.copy(OrderType.Ascending))
-                })
-            Spacer(modifier = Modifier.width(8.dp))
-            DefaultRadioButton(
-                text = "Descending",
-                selected = todoOrder.orderType is OrderType.Descending,
-                onSelect = {
-                    onOrderChange(todoOrder.copy(OrderType.Descending))
-                })
+            Column {
+                IconRadioButton(
+                    imageVector = Icons.Default.ArrowUpward,
+                    selected = todoOrder.orderType is OrderType.Ascending,
+                    onSelect = {
+                        onOrderChange(todoOrder.copy(OrderType.Ascending))
+                    })
+                Spacer(modifier = Modifier.height(18.dp))
+                IconRadioButton(
+                    imageVector = Icons.Default.ArrowDownward,
+                    selected = todoOrder.orderType is OrderType.Descending,
+                    onSelect = {
+                        onOrderChange(todoOrder.copy(OrderType.Descending))
+                    })
+            }
         }
     }
 }
