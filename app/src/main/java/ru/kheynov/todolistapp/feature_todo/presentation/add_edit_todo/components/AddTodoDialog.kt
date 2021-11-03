@@ -53,21 +53,20 @@ fun AddTodoDialog(
             .fillMaxSize()
             .background(transparentBackground),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth(0.7f)
                 .height(120.dp)
                 .clip(MaterialTheme.shapes.large)
-                .background(MaterialTheme.colors.surface)
+                .background(MaterialTheme.colors.surface),
         ) {
             Column {
                 TextField(
                     modifier = modifier
                         .fillMaxWidth()
                         .weight(1f),
-
                     value = text,
                     onValueChange = onValueChange,
                     textStyle = textStyle,
