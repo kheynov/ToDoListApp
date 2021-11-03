@@ -25,8 +25,7 @@ fun TodoItem(
 ) {
     Card(
         modifier = modifier
-            .height(70.dp)
-            .padding(horizontal = 18.dp),
+            .height(70.dp),
         shape = RoundedCornerShape(cornerRadius),
     ) {
         Row(

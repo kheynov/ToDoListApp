@@ -111,7 +111,7 @@ fun TodosScreen(
                     )
                 }
             } else {
-                LazyColumn(modifier = Modifier.fillMaxSize()) {
+                LazyColumn(modifier = Modifier.fillMaxSize().padding(horizontal = 18.dp)) {
                     items(state.todos) { todo ->
                         TodoItem(
                             todo = todo,
