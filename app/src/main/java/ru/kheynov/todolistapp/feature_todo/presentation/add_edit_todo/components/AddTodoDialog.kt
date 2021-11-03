@@ -72,6 +72,7 @@ fun AddTodoDialog(
                     value = text,
                     onValueChange = onValueChange,
                     textStyle = textStyle,
+                    singleLine = true,
                     label = { Text(text = textFieldLabel) },
                     colors = TextFieldDefaults.textFieldColors(
                         textColor = MaterialTheme.colors.onSurface,
@@ -87,7 +88,8 @@ fun AddTodoDialog(
                 Row(
                     Modifier
                         .weight(0.9f)
-                        .padding(horizontal = 8.dp)
+                        .padding(horizontal = 12.dp, vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     IconButton(
                         onClick = onBack, Modifier.weight(1f)
