@@ -13,11 +13,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
+import ru.kheynov.todolistapp.R
 import ru.kheynov.todolistapp.feature_todo.domain.model.Todo
 import ru.kheynov.todolistapp.feature_todo.presentation.todos.components.OrderSection
 import ru.kheynov.todolistapp.feature_todo.presentation.todos.components.TodoItem
@@ -33,7 +35,8 @@ fun TodosScreen(
     val state = viewModel.state.value
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
-
+    val snackbarTodoDeletedMessage = stringResource(id = R.string.snackbar_todo_deleted_message)
+    val snackbarUndoMessage = stringResource(id = R.string.snackbar_undo_message)
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
@@ -61,7 +64,7 @@ fun TodosScreen(
                 Spacer(modifier = Modifier.weight(2f))
                 Text(
                     modifier = Modifier.weight(5f),
-                    text = "ToDo's",
+                    text = stringResource(id = R.string.todos_title),
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.h4
                 )
@@ -102,7 +105,7 @@ fun TodosScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "To add ToDo press \"+\"",
+                        text = stringResource(id = R.string.todos_welcome_text),
                         textAlign = TextAlign.Center,
                         style = MaterialTheme.typography.h3,
                     )
@@ -124,8 +127,8 @@ fun TodosScreen(
                                 viewModel.onEvent(TodosEvent.DeleteTodo(todo))
                                 scope.launch {
                                     val result = scaffoldState.snackbarHostState.showSnackbar(
-                                        message = "Todo Deleted",
-                                        actionLabel = "Undo",
+                                        message = snackbarTodoDeletedMessage,
+                                        actionLabel = snackbarUndoMessage,
 
                                         )
                                     if (result == SnackbarResult.ActionPerformed) {

@@ -4,9 +4,11 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import kotlinx.coroutines.flow.collectLatest
+import ru.kheynov.todolistapp.R
 import ru.kheynov.todolistapp.feature_todo.presentation.add_edit_todo.components.AddTodoDialog
 
 @Composable
@@ -39,7 +41,7 @@ fun AddEditTotoScreen(
         onSave = { viewModel.onEvent(AddEditTodoEvent.SaveTodo) },
         text = titleState.text,
         textStyle = MaterialTheme.typography.body1,
-        textFieldLabel = "Enter new ToDo name",
+        textFieldLabel = stringResource(id = R.string.input_field_create_todo_label),
         onBack = {
             navController.navigateUp()
         }

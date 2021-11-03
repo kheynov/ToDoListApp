@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ToDoListApp</string>
+    <string name="todos_title">Todo\'s</string>
+    <string name="todos_welcome_text">To add ToDo press \"+\"</string>
+    <string name="snackbar_todo_deleted_message">Todo Deleted</string>
+    <string name="snackbar_undo_message">Undo</string>
+    <string name="sortRadioButtonTitle">Title</string>
+    <string name="sortRadioButtonDate">Date</string>
+    <string name="input_field_create_todo_label">Enter a name for new ToDo</string>
 </resources>
