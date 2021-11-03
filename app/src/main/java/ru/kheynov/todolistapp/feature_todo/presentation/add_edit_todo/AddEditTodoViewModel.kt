@@ -63,7 +63,8 @@ class AddEditTodoViewModel @Inject constructor(
                             Todo(
                                 title = todoTitle.value.text,
                                 isChecked = false,
-                                id = currentTodoId
+                                id = currentTodoId,
+                                timestamp = System.currentTimeMillis()
                             )
                         )
 
