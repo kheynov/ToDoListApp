@@ -17,12 +17,12 @@ import javax.inject.Inject
 @HiltViewModel
 class AddEditTodoViewModel @Inject constructor(
     private val todosUseCases: TodosUseCases,
-    savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
     private val _todoTitle = mutableStateOf(
         TodoTextFieldState(
-            hint = "Enter name for todo"
+            hint = ""
         )
     )
     val todoTitle: State<TodoTextFieldState> = _todoTitle
