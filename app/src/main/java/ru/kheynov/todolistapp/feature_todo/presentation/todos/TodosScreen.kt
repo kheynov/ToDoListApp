@@ -28,7 +28,7 @@ import ru.kheynov.todolistapp.feature_todo.presentation.util.ScreenRoutes
 @Composable
 fun TodosScreen(
     navController: NavController,
-    viewModel: TodoViewModel = hiltViewModel()
+    viewModel: TodoViewModel = hiltViewModel(),
 ) {
     val state = viewModel.state.value
     val scaffoldState = rememberScaffoldState()
@@ -69,8 +69,8 @@ fun TodosScreen(
                 IconButton(
                     modifier = Modifier.weight(1f),
                     onClick = {
-                    viewModel.onEvent(TodosEvent.ToggleOrderSection)
-                }) {
+                        viewModel.onEvent(TodosEvent.ToggleOrderSection)
+                    }) {
                     Icon(
                         imageVector = Icons.Default.Sort,
                         contentDescription = "Sort"
@@ -96,45 +96,58 @@ fun TodosScreen(
                 }
             }
             Spacer(modifier = Modifier.height(16.dp))
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
-                items(state.todos) { todo ->
-                    TodoItem(
-                        todo = todo,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable {
-                                navController.navigate(
-                                    ScreenRoutes.AddEditTodoScreen.route +
-                                            "?todoId=${todo.id}"
-                                )
-                            },
-                        onDeleteClick = {
-                            viewModel.onEvent(TodosEvent.DeleteTodo(todo))
-                            scope.launch {
-                                val result = scaffoldState.snackbarHostState.showSnackbar(
-                                    message = "Todo Deleted",
-                                    actionLabel = "Undo",
-
-                                    )
-                                if (result == SnackbarResult.ActionPerformed) {
-                                    viewModel.onEvent(TodosEvent.RestoreTodo)
-                                }
-                            }
-                        },
-                        onChecked = {
-                            viewModel.onEvent(
-                                TodosEvent.SaveTodo(
-                                    Todo(
-                                        title = todo.title,
-                                        isChecked = it,
-                                        id = todo.id,
-                                        timestamp = System.currentTimeMillis(),
-                                    )
-                                )
-                            )
-                        }
+            if (state.todos.isEmpty()) {
+                Column(modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "To add ToDo press \"+\"",
+                        textAlign = TextAlign.Center,
+                        style = MaterialTheme.typography.h3,
                     )
-                    Spacer(modifier = Modifier.height(8.dp))
+                }
+            } else {
+                LazyColumn(modifier = Modifier.fillMaxSize()) {
+                    items(state.todos) { todo ->
+                        TodoItem(
+                            todo = todo,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    navController.navigate(
+                                        ScreenRoutes.AddEditTodoScreen.route +
+                                                "?todoId=${todo.id}"
+                                    )
+                                },
+                            onDeleteClick = {
+                                viewModel.onEvent(TodosEvent.DeleteTodo(todo))
+                                scope.launch {
+                                    val result = scaffoldState.snackbarHostState.showSnackbar(
+                                        message = "Todo Deleted",
+                                        actionLabel = "Undo",
+
+                                        )
+                                    if (result == SnackbarResult.ActionPerformed) {
+                                        viewModel.onEvent(TodosEvent.RestoreTodo)
+                                    }
+                                }
+                            },
+                            onChecked = {
+                                viewModel.onEvent(
+                                    TodosEvent.SaveTodo(
+                                        Todo(
+                                            title = todo.title,
+                                            isChecked = it,
+                                            id = todo.id,
+                                            timestamp = System.currentTimeMillis(),
+                                        )
+                                    )
+                                )
+                            }
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                    }
                 }
             }
         }
