@@ -58,7 +58,7 @@ fun TodosScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Spacer(modifier = Modifier.width(24.dp))
+                Spacer(modifier = Modifier.width(28.dp))
                 Text(
                     text = "ToDo's",
                     style = MaterialTheme.typography.h4
@@ -108,7 +108,8 @@ fun TodosScreen(
                             scope.launch {
                                 val result = scaffoldState.snackbarHostState.showSnackbar(
                                     message = "Todo Deleted",
-                                    actionLabel = "Undo"
+                                    actionLabel = "Undo",
+
                                 )
                                 if (result == SnackbarResult.ActionPerformed) {
                                     viewModel.onEvent(TodosEvent.RestoreTodo)

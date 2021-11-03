@@ -58,7 +58,7 @@ fun AddTodoDialog(
         Box(
             modifier = Modifier
                 .fillMaxWidth(0.7f)
-                .height(100.dp)
+                .height(120.dp)
                 .clip(MaterialTheme.shapes.large)
                 .background(MaterialTheme.colors.surface)
         ) {
