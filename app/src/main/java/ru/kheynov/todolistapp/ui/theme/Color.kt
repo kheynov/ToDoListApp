@@ -6,6 +6,7 @@ val primaryColor = Color(0xFF607D8B)
 val lightPrimaryColor = Color(0xFFCFD8DC)
 val colorAccent = Color(0xFF4CAF50)
 
+val transparentBackground = Color.Black.copy(alpha = 0.6f)
 
 //Light scheme
 val lightSurfaceColor = Color(0xFFe2e2e2)
