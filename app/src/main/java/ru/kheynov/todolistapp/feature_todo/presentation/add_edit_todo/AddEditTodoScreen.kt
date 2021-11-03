@@ -1,20 +1,12 @@
 package ru.kheynov.todolistapp.feature_todo.presentation.add_edit_todo
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Save
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import kotlinx.coroutines.flow.collectLatest
-import ru.kheynov.todolistapp.feature_todo.presentation.add_edit_todo.components.HintTextField
+import ru.kheynov.todolistapp.feature_todo.presentation.add_edit_todo.components.AddTodoDialog
 
 @Composable
 fun AddEditTotoScreen(
@@ -39,38 +31,15 @@ fun AddEditTotoScreen(
             }
         }
     }
-    Scaffold(
-        floatingActionButton = {
-            FloatingActionButton(
-                onClick = {
-                    viewModel.onEvent(AddEditTodoEvent.SaveTodo)
-                },
-                backgroundColor = MaterialTheme.colors.primary
-            ) {
-                Icon(imageVector = Icons.Default.Save, contentDescription = "Save Todo")
-            }
+    AddTodoDialog(
+        onValueChange = {
+            viewModel.onEvent(AddEditTodoEvent.EnteredTitle(it))
         },
-        scaffoldState = scaffoldState
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Center
-        ) {
-            HintTextField(
-                text = titleState.text,
-                hint = titleState.hint,
-                onValueChange = {
-                    viewModel.onEvent(AddEditTodoEvent.EnteredTitle(it))
-                },
-                onFocusChange = {
-                    viewModel.onEvent(AddEditTodoEvent.ChangeTitleFocus(it))
-                },
-                isHintVisible = titleState.isHintVisible,
-                singleLine = true,
-                textStyle = MaterialTheme.typography.h5,
-            )
+        onSave = { viewModel.onEvent(AddEditTodoEvent.SaveTodo) },
+        text = titleState.text,
+        textFieldLabel = "Enter new ToDo name",
+        onBack = {
+            navController.navigateUp()
         }
-    }
+    )
 }
