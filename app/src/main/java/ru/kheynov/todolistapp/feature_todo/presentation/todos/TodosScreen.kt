@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -53,17 +54,21 @@ fun TodosScreen(
         ) {
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 12.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Spacer(modifier = Modifier.width(28.dp))
+                Spacer(modifier = Modifier.weight(2f))
                 Text(
+                    modifier = Modifier.weight(5f),
                     text = "ToDo's",
+                    textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.h4
                 )
-                IconButton(onClick = {
+                Spacer(modifier = Modifier.weight(1f))
+                IconButton(
+                    modifier = Modifier.weight(1f),
+                    onClick = {
                     viewModel.onEvent(TodosEvent.ToggleOrderSection)
                 }) {
                     Icon(
@@ -110,7 +115,7 @@ fun TodosScreen(
                                     message = "Todo Deleted",
                                     actionLabel = "Undo",
 
-                                )
+                                    )
                                 if (result == SnackbarResult.ActionPerformed) {
                                     viewModel.onEvent(TodosEvent.RestoreTodo)
                                 }
