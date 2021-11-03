@@ -13,10 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.kheynov.todolistapp.ui.theme.ToDoListAppTheme
@@ -25,7 +25,7 @@ import ru.kheynov.todolistapp.ui.theme.transparentBackground
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_NO)
 @Composable
 fun AddTodoDialogPreview() {
-    ToDoListAppTheme() {
+    ToDoListAppTheme {
         AddTodoDialog(
             onValueChange = {},
             textFieldLabel = "Enter todo name",
@@ -62,8 +62,7 @@ fun AddTodoDialog(
                 .clip(MaterialTheme.shapes.large)
                 .background(MaterialTheme.colors.surface)
         ) {
-            Column(
-            ) {
+            Column {
                 TextField(
                     modifier = modifier
                         .fillMaxWidth()
@@ -79,7 +78,8 @@ fun AddTodoDialog(
                         cursorColor = MaterialTheme.colors.secondary,
                     ),
                     keyboardOptions = KeyboardOptions.Default.copy(
-                        imeAction = ImeAction.Done
+                        imeAction = ImeAction.Done,
+                        capitalization = KeyboardCapitalization.Sentences,
                     ),
                     keyboardActions = KeyboardActions(onDone = {
                         focusManager.clearFocus()
@@ -89,7 +89,7 @@ fun AddTodoDialog(
                     Modifier
                         .weight(0.9f)
                         .padding(horizontal = 12.dp, vertical = 8.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     IconButton(
                         onClick = onBack, Modifier.weight(1f)
