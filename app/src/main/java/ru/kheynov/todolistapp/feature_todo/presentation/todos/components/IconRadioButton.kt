@@ -1,10 +1,12 @@
 package ru.kheynov.todolistapp.feature_todo.presentation.todos.components
 
-import android.graphics.drawable.Icon
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.RadioButton
+import androidx.compose.material.RadioButtonDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier

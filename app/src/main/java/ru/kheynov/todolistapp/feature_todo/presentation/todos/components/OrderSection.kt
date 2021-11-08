@@ -26,7 +26,7 @@ fun OrderSectionPreview() {
 @Composable
 fun OrderSection(
     modifier: Modifier = Modifier,
-    todoOrder: TodoOrder = TodoOrder.Date(OrderType.Descending),
+    todoOrder: TodoOrder = TodoOrder.Title(OrderType.Descending),
     onOrderChange: (TodoOrder) -> Unit
 ) {
     Row(modifier = Modifier.fillMaxWidth()) {
