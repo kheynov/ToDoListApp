@@ -1,5 +1,6 @@
 package ru.kheynov.todolistapp.feature_todo.presentation.todos.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -21,7 +22,8 @@ fun TodoItem(
     modifier: Modifier = Modifier,
     cornerRadius: Dp = 10.dp,
     onDeleteClick: () -> Unit,
-    onChecked: (Boolean) -> Unit
+    onEditClick: () -> Unit,
+    onChecked: (Boolean) -> Unit,
 ) {
     Card(
         modifier = modifier
@@ -33,12 +35,16 @@ fun TodoItem(
                 .fillMaxSize(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Spacer(modifier = Modifier.width(18.dp))
+            Spacer(modifier = Modifier
+                .width(18.dp)
+            )
             Checkbox(
                 checked = todo.isChecked,
                 onCheckedChange = onChecked
             )
-            Spacer(modifier = Modifier.width(18.dp))
+            Spacer(modifier = Modifier
+                .width(18.dp)
+            )
             Text(
                 text = todo.title,
                 style = MaterialTheme.typography.h5,
@@ -46,7 +52,9 @@ fun TodoItem(
                 color = if (todo.isChecked) Color.Gray else MaterialTheme.colors.onSurface,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.weight(16f)
+                modifier = Modifier
+                    .weight(16f)
+                    .clickable { onEditClick() }
             )
             Spacer(modifier = Modifier.height(6.dp))
             IconButton(

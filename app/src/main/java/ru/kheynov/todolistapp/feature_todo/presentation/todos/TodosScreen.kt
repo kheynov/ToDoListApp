@@ -1,7 +1,6 @@
 package ru.kheynov.todolistapp.feature_todo.presentation.todos
 
 import androidx.compose.animation.*
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -111,18 +110,20 @@ fun TodosScreen(
                     )
                 }
             } else {
-                LazyColumn(modifier = Modifier.fillMaxSize().padding(horizontal = 18.dp)) {
+                LazyColumn(modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 18.dp)) {
                     items(state.todos) { todo ->
                         TodoItem(
                             todo = todo,
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable {
-                                    navController.navigate(
-                                        ScreenRoutes.AddEditTodoScreen.route +
-                                                "?todoId=${todo.id}"
-                                    )
-                                },
+                                .fillMaxWidth(),
+                            onEditClick = {
+                                navController.navigate(
+                                    ScreenRoutes.AddEditTodoScreen.route +
+                                            "?todoId=${todo.id}"
+                                )
+                            },
                             onDeleteClick = {
                                 viewModel.onEvent(TodosEvent.DeleteTodo(todo))
                                 scope.launch {
