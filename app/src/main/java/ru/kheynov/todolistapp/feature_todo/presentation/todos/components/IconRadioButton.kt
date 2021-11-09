@@ -1,5 +1,6 @@
 package ru.kheynov.todolistapp.feature_todo.presentation.todos.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
@@ -33,6 +34,8 @@ fun IconRadioButton(
             )
         )
         Spacer(modifier = Modifier.width(8.dp))
-        Icon(imageVector = imageVector, contentDescription = "RadioButtonImage")
+        Icon(imageVector = imageVector,
+            contentDescription = "RadioButtonImage",
+            Modifier.clickable { onSelect() })
     }
 }
