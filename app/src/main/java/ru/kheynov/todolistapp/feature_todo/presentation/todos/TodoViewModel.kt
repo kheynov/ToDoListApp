@@ -29,7 +29,7 @@ class TodoViewModel @Inject constructor(
     private var getTodosJob: Job? = null
 
     init {
-        getTodos(TodoOrder.Date(OrderType.Descending))
+        getTodos(TodoOrder.Date(OrderType.Ascending))
     }
 
     fun onEvent(event: TodosEvent) {
