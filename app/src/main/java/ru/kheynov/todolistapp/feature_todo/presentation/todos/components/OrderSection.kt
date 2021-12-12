@@ -33,10 +33,12 @@ fun OrderSection(
     onOrderChange: (TodoOrder) -> Unit
 ) {
     Row(modifier = Modifier.fillMaxWidth()) {
+        Spacer(modifier = Modifier.width(36.dp))
         Column(
             modifier = modifier.weight(1f),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.Start
         ) {
+
             DefaultRadioButton(
                 text = stringResource(id = R.string.sortRadioButtonTitle),
                 selected = todoOrder is TodoOrder.Title,
