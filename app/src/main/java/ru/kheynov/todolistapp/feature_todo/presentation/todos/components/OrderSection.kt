@@ -1,5 +1,7 @@
 package ru.kheynov.todolistapp.feature_todo.presentation.todos.components
 
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDownward
@@ -15,7 +17,8 @@ import ru.kheynov.todolistapp.feature_todo.domain.util.OrderType
 import ru.kheynov.todolistapp.feature_todo.domain.util.TodoOrder
 import ru.kheynov.todolistapp.ui.theme.ToDoListAppTheme
 
-@Preview
+@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_NO, name = "light")
+@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES, name = "dark")
 @Composable
 fun OrderSectionPreview() {
     ToDoListAppTheme {

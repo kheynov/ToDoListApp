@@ -23,6 +23,7 @@ import ru.kheynov.todolistapp.feature_todo.presentation.todos.TodosScreen
 import ru.kheynov.todolistapp.feature_todo.presentation.util.ScreenRoutes
 import ru.kheynov.todolistapp.ui.theme.ToDoListAppTheme
 
+
 @ExperimentalAnimationApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
