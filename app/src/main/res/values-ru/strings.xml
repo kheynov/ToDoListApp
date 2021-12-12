@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="todos_title">Заметки</string>
+    <string name="todos_welcome_text">Чтобы добавить заметку нажмите \"+\"</string>
+    <string name="snackbar_todo_deleted_message">Заметка удалена</string>
+    <string name="snackbar_undo_message">Отменить</string>
+    <string name="sortRadioButtonTitle">По заголовку</string>
+    <string name="sortRadioButtonDate">По дате</string>
+    <string name="input_field_create_todo_label">Введите имя для новой заметки</string>
+</resources>
