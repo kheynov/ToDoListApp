@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">ToDoListApp</string>
     <string name="todos_title">Заметки</string>
     <string name="todos_welcome_text">Чтобы добавить заметку нажмите \"+\"</string>
     <string name="snackbar_todo_deleted_message">Заметка удалена</string>
