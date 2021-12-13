@@ -12,18 +12,32 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import ru.kheynov.todolistapp.feature_todo.domain.model.Todo
+
+@Preview()
+@Composable
+fun TodoItemPreview() {
+    TodoItem(
+        todo = Todo(
+            "Todo Example",
+            false,
+            23123123,
+            12132,
+        )
+    )
+}
 
 @Composable
 fun TodoItem(
     todo: Todo,
     modifier: Modifier = Modifier,
     cornerRadius: Dp = 10.dp,
-    onDeleteClick: () -> Unit,
-    onEditClick: () -> Unit,
-    onChecked: (Boolean) -> Unit,
+    onDeleteClick: () -> Unit = {},
+    onEditClick: () -> Unit = {},
+    onChecked: (Boolean) -> Unit = {},
 ) {
     Card(
         modifier = modifier
@@ -32,7 +46,8 @@ fun TodoItem(
     ) {
         Row(
             modifier = Modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                .clickable { onEditClick() },
             verticalAlignment = Alignment.CenterVertically
         ) {
             Spacer(modifier = Modifier
@@ -54,7 +69,6 @@ fun TodoItem(
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
                     .weight(16f)
-                    .clickable { onEditClick() }
             )
             Spacer(modifier = Modifier.height(6.dp))
             IconButton(
