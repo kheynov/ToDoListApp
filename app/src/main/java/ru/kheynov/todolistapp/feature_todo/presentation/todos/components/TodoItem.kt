@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import ru.kheynov.todolistapp.feature_todo.domain.model.Todo
 
-@Preview()
+@Preview
 @Composable
 fun TodoItemPreview() {
     TodoItem(
@@ -50,16 +50,18 @@ fun TodoItem(
                 .clickable { onEditClick() },
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Spacer(modifier = Modifier
-                .width(18.dp)
-            )
-            Checkbox(
-                checked = todo.isChecked,
-                onCheckedChange = onChecked
-            )
-            Spacer(modifier = Modifier
-                .width(18.dp)
-            )
+            Box(modifier = Modifier
+                .fillMaxHeight()
+                .width(56.dp)
+                .clickable { onChecked(!todo.isChecked) },
+                contentAlignment = Alignment.Center) {
+
+                Checkbox(
+                    checked = todo.isChecked,
+                    onCheckedChange = onChecked
+                )
+
+            }
             Text(
                 text = todo.title,
                 style = MaterialTheme.typography.h5,
@@ -69,6 +71,7 @@ fun TodoItem(
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
                     .weight(16f)
+                    .padding(start = 4.dp)
             )
             Spacer(modifier = Modifier.height(6.dp))
             IconButton(
